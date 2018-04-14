@@ -1,11 +1,29 @@
 " ~/.vimrc (configuration file for vim only)
-" skeletons
+
+set nocompatible
+"filetype off
+
+"
+" Vundle Plugins
+"
+
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+"
+" get Vundle itself
+"Plugin 'VundleVim/Vundle.vim'
+"
+" supertab
+"Plugin 'ervandew/supertab'
+"
+"call vundle#end()
 
 "
 " General
 "
 
-filetype plugin indent on
+"filetype plugin indent on
+filetype plugin on
 
 set number "show line numbers
 
@@ -19,7 +37,11 @@ set wildmenu
 " Colors, Fonts and Searching
 "
 
-colo 256-gray "color scheme
+" set background=dark
+" let g:rehash256 = 1
+" colo molokai
+colo elflord
+""colo 256-gray "color scheme
 syntax on "syntax highlighting
 set encoding=utf8 "encoding
 
@@ -27,8 +49,8 @@ set encoding=utf8 "encoding
 set tabstop=4
 set shiftwidth=4
 " set expandtab "expand tabs to spaces
-set ai "auto indent
-set si "smart indent
+"set ai "auto indent
+"set si "smart indent
 set wrap "wrap lines
 
 " searching:
