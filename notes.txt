@@ -1,0 +1,21 @@
+ln -s dotfiles/vim/.vimrc $HOME/.vimrc
+ln -s dotfiles/screen/.screenrc $HOME/.screenrc
+
+ln -s dotfiles/i3/config $HOME/.config/i3/config
+ln -s dotfiles/i3/custom_i3lock.sh $HOME/.config/i3/custom_i3lock.sh
+ln -s dotfiles/i3/mpd_autostart.sh $HOME/.config/i3/mpd_autostart.sh
+ln -s dotfiles/i3/i3blocks.conf $HOME/.config/i3/i3blocks.conf
+
+ln -s dotfiles/rofi/config $HOME/.config/rofi/config
+
+ln -s dotfiles/fontconfig/conf.d/10-symbols.conf $HOME/.config/fontconfig/conf.d/10-symbols.conf
+
+ln -s dotfiles/polybar/config $HOME/.config/polybar/config
+ln -s dotfiles/polybar/launch.sh $HOME/.config/polybar/launch.sh
+
+# wallpaper changer
+sudo ln -s dotfiles/wallpaper_changer/wallpaper_shuffle.sh /usr/local/bin/wallpaper_shuffle.sh
+sudo cp dotfiles/wallpaper_changer/wallpaper.service /usr/lib/systemd/user/wallpaper.service
+sudo cp dotfiles/wallpaper_changer/wallpaper.timer /usr/lib/systemd/user/wallpaper.timer
+systemctl --user enable wallpaper.timer
+systemctl --user start wallpaper.timer

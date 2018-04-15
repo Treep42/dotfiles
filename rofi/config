@@ -1,0 +1,5 @@
+rofi.theme: /usr/share/rofi/themes/solarized_alternate.rasi
+rofi.terminal: i3-sensible-terminal
+rofi.combi-modi: window,drun
+rofi.modi: window,drun,combi
+rofi.show-icons: true
