@@ -13,9 +13,23 @@ ln -s dotfiles/fontconfig/conf.d/10-symbols.conf $HOME/.config/fontconfig/conf.d
 ln -s dotfiles/polybar/config $HOME/.config/polybar/config
 ln -s dotfiles/polybar/launch.sh $HOME/.config/polybar/launch.sh
 
+ln -s dotfile/termite/config $HOME/.config/termite/config
+
 # wallpaper changer
-sudo ln -s dotfiles/wallpaper_changer/wallpaper_shuffle.sh /usr/local/bin/wallpaper_shuffle.sh
-sudo cp dotfiles/wallpaper_changer/wallpaper.service /usr/lib/systemd/user/wallpaper.service
-sudo cp dotfiles/wallpaper_changer/wallpaper.timer /usr/lib/systemd/user/wallpaper.timer
+sudo ln -s dotfiles/scripts/wallpaper_shuffle.sh /usr/local/bin/wallpaper_shuffle.sh
+sudo cp dotfiles/systemd/wallpaper.service /usr/lib/systemd/user/wallpaper.service
+sudo cp dotfiles/systemd/wallpaper.timer /usr/lib/systemd/user/wallpaper.timer
 systemctl --user enable wallpaper.timer
 systemctl --user start wallpaper.timer
+
+# modified /etc/systemd/logind.conf to have poweroff button ignored by systemd (so we don't accientally shutdown)
+
+# call our custom_i3lock.sh on suspend/sleep
+sudo ln -s dotfiles/i3/custom_i3lock.sh /usr/local/bin/custom_i3lock.sh
+sudo cp dotfiles/systemd/chely-suspend@.service /etc/systemd/system # TODO check if this is the correct place, shouldn't it go to /usr/lib/systemd/user??
+systemctl enable chely-suspend@elisabeth.service
+
+
+#### SYSTEMD SERVICES
+# if not already enabled
+systemctl --user enable mpd.service

@@ -1,0 +1,11 @@
+[Unit]
+Description=Wallpaper Changer Daemon
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/wallpaper_shuffle.sh
+ProtectSystem=yes
+NoNewPrivileges=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes

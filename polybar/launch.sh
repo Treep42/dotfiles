@@ -7,6 +7,6 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/nulL; do sleep 1; done
 
 # launch bar(s)
-polybar example &
+polybar chely &
 
 echo "Polybars launched"

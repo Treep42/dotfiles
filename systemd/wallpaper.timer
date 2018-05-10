@@ -2,7 +2,7 @@
 Description=Run wallpaper shuffler every X minutes
 
 [Timer]
-OnBootSec=30min
+OnBootSec=1
 OnUnitActiveSec=30min
 
 [Install]

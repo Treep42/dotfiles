@@ -1,0 +1,18 @@
+[Unit]
+Description=User supend actions for chelydra
+Before=sleep.target
+
+# to have started at boot:
+# systemctl enable chely-suspend@USER
+[Service]
+User=%I
+# need forking so i3lock stays active after we wake up
+Type=forking
+# need Environment so service can connect to X11 session
+Environment=DISPLAY=:0
+# stop music
+ExecStartPre=/usr/bin/mpc stop
+ExecStart=/usr/local/bin/custom_i3lock.sh
+
+[Install]
+WantedBy=sleep.target

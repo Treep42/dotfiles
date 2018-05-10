@@ -37,11 +37,19 @@ set wildmenu
 " Colors, Fonts and Searching
 "
 
-" set background=dark
-" let g:rehash256 = 1
-" colo molokai
-colo elflord
+"### molokai
+set background=dark
+"let g:rehash256 = 1
+let g:molokai_original = 1
+colo molokai
+"### some default color scheme
+"colo elflord
 ""colo 256-gray "color scheme
+"### solarized
+"set background=dark
+"let g:solarized_termcolors=256
+"colo solarized
+
 syntax on "syntax highlighting
 set encoding=utf8 "encoding
 
