@@ -1,26 +1,13 @@
-# $Id: screenrc,v 1.15 2003/10/08 11:39:03 zal Exp $
-#
-# /etc/screenrc
-#
-#   This is elisabeth's screenrc
+# MINIMUM SCREENRC
 
-# ------------------------------------------------------------------------------
-# SCREEN SETTINGS
-# ------------------------------------------------------------------------------
-
+# -- SETTINGS --
 startup_message off
 #nethack on
-
 #defflow on # will force screen to process ^S/^Q
 deflogin on
 #autodetach off
-
-# turn visual bell off -> damn it's annoying!
-vbell off
-#vbell_msg "   Wuff  ----  Wuff!!  "
-
-# define a bigger scrollback, default is 100 lines
-defscrollback 5000
+vbell off # visual bell
+defscrollback 5000 # default is 100 lines
 
 # 256 colors
 attrcolor b ".I"
@@ -33,17 +20,15 @@ altscreen on
 # set shell
 shell -$SHELL
 
-#default vindows
+# default vindows
 screen -t SHELL 1 bash
-screen -t VIM 2 bash
 select 0
-bind c screen 1 #window numbering starts at 1 not 0
+# window numbering starts at 1 not 0
+bind c screen 1 
 bind 0 select 10
 
-# ------------------------------------------------------------------------------
-# SCREEN KEYBINDINGS
-# ------------------------------------------------------------------------------
 
+# -- KEYBINDS --
 # Remove some stupid / dangerous key bindings
 bind ^k
 #bind L
@@ -58,14 +43,7 @@ bind } history
 # make screen list keybinding less stupid -> now C-a space
 bind ' ' windowlist -b
 
-# An example of a "screen scraper" which will launch urlview on the current
-# screen window
-#
-#bind ^B eval "hardcopy_append off" "hardcopy -h $HOME/.screen-urlview" "screen urlview $HOME/.screen-urlview"
-
-# ------------------------------------------------------------------------------
-# TERMINAL SETTINGS
-# ------------------------------------------------------------------------------
+# -- TERMINAL SETTINGS --
 
 # The vt100 description does not mention "dl". *sigh*
 termcapinfo vt100 dl=5\E[M
@@ -77,45 +55,20 @@ termcapinfo xterm*|rxvt*|kterm*|Eterm* hs:ts=\E]0;:fs=\007:ds=\E]0;\007
 # use this for the hard status string
 #hardstatus string "%h%? users: %u%?"
 
-# An alternative hardstatus to display a bar at the bottom listing the
-# windownames and highlighting the current windowname in blue. (This is only
-# enabled if there is no hardstatus setting for your terminal)
-#
-#hardstatus lastline "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+# hardstatus to display a bar at the bottom listing the windownames and highlighting the current windowname
+# backtick helper command: name of current screen session
+backtick 0 30 30 sh -c 'screen -ls | grep --color=no -o "$PPID[^[:space:]]*"' 
 hardstatus alwayslastline
+# with time
 #hardstatus string '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%m/%d %{W}%C%A%{g}]'
-backtick 0 30 30 sh -c 'screen -ls | grep --color=no -o "$PPID[^[:space:]]*"' #backtick command: name of current screen session
-hardstatus string '%{= Kg}[ %{W}%`%?%{-} ][%= %{W}%-w%{Yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][ %{W}%H%?%{-} ]' #without time
+# without time
+hardstatus string '%{= Kg}[ %{W}%`%?%{-} ][%= %{W}%-w%{Yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][ %{W}%H%?%{-} ]' 
 
 # set these terminals up to be 'optimal' instead of vt100
 termcapinfo xterm*|linux*|rxvt*|Eterm* OP
 
 # Change the xterm initialization string from is2=\E[!p\E[?3;4l\E[4l\E>
-# (This fixes the "Aborted because of window size change" konsole symptoms found
-#  in bug #134198)
 termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
-
-# To get screen to add lines to xterm's scrollback buffer, uncomment the
-# following termcapinfo line which tells xterm to use the normal screen buffer
-# (which has scrollback), not the alternate screen buffer.
-#
-#termcapinfo xterm|xterms|xs|rxvt ti@:te@
 
 # Enable non-blocking mode to better cope with flaky ssh connections.
 defnonblock 5
-
-# ------------------------------------------------------------------------------
-# STARTUP SCREENS
-# ------------------------------------------------------------------------------
-
-# Example of automatically running some programs in windows on screen startup.
-#
-#   The following will open top in the first window, an ssh session to monkey
-#   in the next window, and then open mutt and tail in windows 8 and 9
-#   respectively.
-#
-# screen top
-# screen -t monkey ssh monkey
-# screen -t mail 8 mutt
-# screen -t daemon 9 tail -f /var/log/daemon.log
-
