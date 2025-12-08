@@ -1,0 +1,103 @@
+/* which catppuccin flavour to use.: */
+@import "catppuccin-macchiato.css";
+
+/* define required color names */
+@define-color background-bar @base;
+@define-color background-module @surface0;
+@define-color foreground @text;
+@define-color foreground-alt @surface0;
+
+/* WORKSPACES */
+/* need to do the same radius removing for the workspaces module and the leftmost
+ * entry (button) of that module, to have it sit flush with the screen edge */
+#workspaces {
+    border-radius: 0rem 1rem 1rem 0rem;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+}
+#workspaces button:first-child {
+    border-radius: 0rem 1rem 1rem 0rem;
+    padding-left: 10px;
+}
+#workspaces button {
+    border-radius: 1rem;
+    padding-right: 1rem;
+    padding-right: 1rem;
+    margin: 0;
+}
+#workspaces button.active {
+  color: @foreground-alt;
+  background-color: @green;
+}
+#workspaces button.active:hover {
+  background-color: @teal;
+  color: @foreground-alt;
+}
+#workspaces button:hover {
+    color: @teal;
+}
+
+#window {
+    background: transparent;
+}
+
+#mpd {
+    background-color: transparent;
+}
+
+#custom-rmpc {
+    background-color: transparent;
+}
+
+#idle_inhibitor {
+    color: @foreground-alt;
+    background-color: @peach;
+    padding-left: 0.7rem;
+    padding-right: 1.2rem;
+}
+
+#pulseaudio {
+    color: @foreground-alt;
+    background-color: @teal;
+}
+
+#cpu {
+    color: @foreground-alt;
+    background-color: @maroon;
+}
+
+#memory {
+    color: @foreground-alt;
+    background-color: @mauve;
+}
+
+#keyboard-state {
+    color: @foreground-alt;
+    background-color: @pink;
+}
+
+#network {
+    color: @foreground-alt;
+    background-color: @peach;
+}
+
+#custom-updates {
+    color: @foreground-alt;
+    background-color: @yellow;
+}
+
+#custom-sessionlock {
+    color: @foreground-alt;
+    background-color: @peach;
+}
+
+#custom-power {
+    color: @foreground-alt;
+    background-color: @maroon;
+}
+
+#tray {
+    /* background-color: @base; */
+}
+#clock {}

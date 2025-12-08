@@ -1,0 +1,85 @@
+/* which color scheme to use: */
+@import "catppuccin.css";
+
+/* to use the same waybar look with a different color scheme without having to
+ * change any of the settings below, the color scheme must define the following colors:
+ * @define-color background-bar <your-color-here>;
+ * @define-color background-module <your-color-here>;
+ * @define-color foreground <your-color-here>;
+ * @define-color foreground-alt <your-color-here>;
+ * */
+
+/* general bar styling */
+* {
+    /* any nerd font is required for icons */
+    font-family: Maple Mono, Roboto, RobotoMono Nerd Font, Noto Sans CJK JP, sans-serif;
+    font-size: 14px;
+    min-height: 0;
+}
+
+/* the main waybar is transparent */
+window#waybar {
+    background-color: transparent;
+    color: @foreground;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* the module bars get to have see-through backgrounds */
+.modules-left, .modules-center, .modules-right {
+    background-color: alpha(@background-bar, 0.4);
+}
+
+/* modules-center just gets boring old rounded corners all around :) */
+.modules-center {
+    border-radius: 1rem;
+}
+
+/* but we want the leftmost edge and rightmost edge of the bar to not have any rounding
+ * so it sits flush with the screen edge */
+.modules-left {
+    border-radius: 0rem 1rem 1rem 0rem;
+    margin-right: 1rem;
+}
+
+.modules-right {
+    border-radius: 1rem 0rem 0rem 1rem;
+    margin-left: 1rem;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* and we need to do the same thing for the leftmost and rightmost modules */
+.modules-right > *:last-child .module {
+    border-radius: 1rem 0rem 0rem 1rem;
+    margin-right: 0rem;
+}
+
+.modules-left > *:first-child .module {
+    border-radius: 0rem 1rem 1rem 0rem;
+    margin-left: 0rem;
+}
+
+/* defaults for all modules */
+.module {
+  background-color: @background-module;
+  border-radius: 1rem;
+  /* padding */
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-left: 1.1rem;
+  padding-right: 1.1rem;
+  /* margins */
+  margin-right: 0.5rem;
+}
+
+/* and some specific margins for the modules on the right */
+.modules-right .module {
+    margin-left: 0;
+}
+

@@ -1,0 +1,297 @@
+// -*- mode: jsonc -*-
+[
+{
+    "output": "DP-3", // right monitor
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 27, // Waybar height (to be removed for auto height)
+    "spacing": 0, // Gaps between modules (4px) (completely handled by css)
+    "reload_style_on_change" : true,
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/submap",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        // "mpd"
+        "custom/rmpc"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "keyboard-state",
+        "tray",
+        "clock",
+        "idle_inhibitor",
+        "custom/power"
+    ],
+    // Modules configuration
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "1": "󰭹",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+    "keyboard-state": {
+        "numlock": false,
+        "capslock": true,
+        "format": {
+            "capslock": "CL{icon}"
+        },
+        "format-icons": {
+            "locked": " ",
+            "unlocked": ""
+        }
+    },
+    "hyprland/submap": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "hyprland/window": {
+        "separate-outputs": true
+    },
+    "mpd": {
+        "format": "{stateIcon} {artist} - {title}",
+        "format-stopped": " stopped",
+        "unknown-tag": "N/A",
+        "interval": 5,
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip": false,
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "custom/rmpc": {
+        "format": "{icon} {text}",
+        "return-type": "json",
+        "interval": 5,
+        "exec-if": "which rmpc",
+        "exec": "~/.config/waybar/scripts/rmpc.py status",
+        "on-click": "~/.config/waybar/scripts/rmpc.py togglepause",
+        "on-click-right": "~/.config/waybar/scripts/rmpc.py next",
+        "format-icons": {
+            "pause": "",
+            "play": "",
+            "stop": ""
+        }
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10,
+        "icons": {
+            // "nheko": "nheko",
+            "nheko": "element",
+            "discord": "discord",
+            "Webex": "webex",
+            "fcitx5": "fcitx",
+            "fcitx": "fcitx",
+            "moczc": "fcitx",
+            "moczc_server": "fcitx",
+            "Steam": "steam",
+            "steam": "steam",
+            "nm-applet": "preferences-system-network"
+        }
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%Y-%m-%d %H:%M}",
+        "format-alt": "{:%Y-%m-%d %H:%M}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": true
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "󰈀",
+        "tooltip-format": "{ifname}: {ipaddr} via {gwaddr} 󰈀",
+        "format-linked": "{ifname} (No IP) 󰈀",
+        "format-disconnected": "⚠",
+        "format-alt": "{ipaddr}/{cidr} 󰈀"
+    },
+    "pulseaudio": {
+        // "format": "{volume}% {icon} {format_source}",
+        // "format-muted": " {format_source}",
+        "format": "{volume}% {icon}",
+        "format-muted": " ",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/power": {
+        "format" : "⏻ ",
+        "tooltip": false,
+        "on-click": "~/.config/waybar/scripts/powermenu.sh"
+        // "menu": "on-click",
+        // "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+        // "menu-actions": {
+        //     "lock": "loginctl lock-session",
+        //     "shutdown": "systemctl poweroff",
+        //     "reboot": "systemctl reboot",
+        //     "suspend": "systemctl suspend",
+        //     "hibernate": "systemctl hibernate"
+        // }
+    }
+},
+{
+    "output": "DP-2", // left monitor
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 27, // Waybar height (to be removed for auto height)
+    "spacing": 0, // Gaps between modules (4px) (completely handled by css)
+    "reload_style_on_change" : true,
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/submap",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        // "mpd"
+        "custom/rmpc"
+    ],
+    "modules-right": [
+        // "pulseaudio",
+        "custom/weather",
+        "custom/updates",
+        "network",
+        "cpu",
+        "memory",
+        "keyboard-state",
+        "clock"
+    ],
+    // Modules configuration
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "1": "󰭹",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+    "keyboard-state": {
+        "numlock": false,
+        "capslock": true,
+        "format": {
+            "capslock": "CL{icon}"
+        },
+        "format-icons": {
+            "locked": " ",
+            "unlocked": ""
+        }
+    },
+    "hyprland/submap": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "hyprland/window": {
+        "separate-outputs": true
+    },
+    "mpd": {
+        "format": "{stateIcon} {artist} - {title}",
+        "format-stopped": " stopped",
+        "unknown-tag": "N/A",
+        "interval": 5,
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip": false,
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "custom/rmpc": {
+        "format": "{icon} {text}",
+        "return-type": "json",
+        "interval": 5,
+        "exec-if": "which rmpc",
+        "exec": "~/.config/waybar/scripts/rmpc.py status",
+        "on-click": "~/.config/waybar/scripts/rmpc.py togglepause",
+        "on-click-right": "~/.config/waybar/scripts/rmpc.py next",
+        "format-icons": {
+            "pause": "",
+            "play": "",
+            "stop": ""
+        }
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%Y-%m-%d %H:%M}",
+        "format-alt": "{:%Y-%m-%d %H:%M}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": true
+    },
+    "memory": {
+        "format": "{percentage}% ",
+        "tooltip": true,
+        "tooltip-format": "{used:0.1f}GiB / {swapUsed:0.1f}GiB swap"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} {icon}",
+        "format-ethernet": "{ifname} ",
+        "tooltip-format": "{ifname}: {ipaddr} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "⚠",
+        "format-alt": "{ipaddr}/{cidr} ",
+        "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"]
+    },
+    "custom/updates": {
+        // https://github.com/coffebar/waybar-module-pacman-updates
+        // yay -S waybar-module-pacman-updates-git
+        "format": "{} {icon}",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "",
+            "updated": ""
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates --tooltip-align-columns"
+    },
+    "custom/weather": {
+        // https://github.com/bjesus/wttrbar
+        // yay -S wttrbar
+        "format": "{}",
+        "tooltip": true,
+        "interval": 3600,
+        "return-type": "json",
+        "exec-if": "which wttrbar",
+        "exec": "wttrbar --hide-conditions --custom-indicator '{ICON} {FeelsLikeC}°/{temp_C}°' --lang de --location 'Münster, Germany'"
+    }
+}
+]
