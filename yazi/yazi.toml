@@ -1,0 +1,43 @@
+[mgr]
+ratio = [2, 4, 3]
+
+[plugin]
+prepend_preloaders = [
+  # Do not preload files in mounted locations:
+  # Environment variable won't work here.
+  # Using absolute path instead.
+  { name = "/run/user/1000/gvfs/**/*", run = "noop" },
+
+  # For mounted hard disk/drive
+  { name = "/run/media/turtle/**/*", run = "noop" },
+]
+prepend_previewers = [
+  # Allow to preview folder.
+  { name = "*/", run = "folder" },
+
+  # Do not previewing files in mounted locations.
+  # Uncomment the line below to allow previewing text files.
+  # { mime = "{text/*,application/x-subrip}", run = "code" },
+
+  # Using absolute path.
+  { name = "/run/user/1000/gvfs/**/*", run = "noop" },
+
+  # For mounted hard disk/drive.
+  { name = "/run/media/turtle/**/*", run = "noop" },
+]
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*"
+run  = "git"
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*/"
+run  = "git"
+
+[opener]
+play = [
+    { run = 'vlc "$@"', orphan = true }
+]
+

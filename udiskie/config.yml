@@ -1,0 +1,19 @@
+program_options:
+  tray: auto             # Show tray icon, auto-hide when there are no mounted devices
+  notify: true           # Enable notifications
+  automount: true        # Enable automatic mounting
+  menu: nested
+  file_manager: xdg-open # Program to open mounted directories
+  terminal: 'yazi'
+
+device_config:
+  # Example: Special options for specific devices
+  - id_uuid: "your-device-uuid"
+    options: [noexec, nodev]
+    ignore: false
+    automount: false
+
+notifications:
+  timeout: 1.5           # Notification timeout in seconds
+  device_mounted: 5      # Show mount notifications for 5 seconds
+  device_unmounted: 5

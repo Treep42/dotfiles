@@ -1,0 +1,39 @@
+[[plugin.deps]]
+use = "boydaihungst/gvfs"
+rev = "f07b496"
+hash = "162bf7326809fb2b831d7fac7525b067"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "8f1d971"
+hash = "3996fc74044bc44144b323686f887e1"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "8f1d971"
+hash = "63b6c222bf2103b3023389dde5e2ecfe"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:zoom"
+rev = "8f1d971"
+hash = "9dee2bf990ea941ccf67df74bca45468"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-paste"
+rev = "8f1d971"
+hash = "75fd60b2df7115e0a6ca31a6a804d320"
+
+[[flavor.deps]]
+use = "whispcat/tokyo-night-moon"
+rev = "746f562"
+hash = "2cff2c25663791bf61d8b8b4a4b707e6"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-macchiato"
+rev = "02f3fc6"
+hash = "3ec21bcfd2735cfcbab61faaf43e59e4"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:dracula"
+rev = "02f3fc6"
+hash = "53e1f10ae0f6abd406e463fceca8622a"
