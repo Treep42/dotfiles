@@ -1,0 +1,46 @@
+@import "~/.config/rofi/config.rasi"
+
+/*****----- Main Window -----*****/
+window {
+    width: 800px;
+}
+
+mainbox {
+    padding: 20px;
+    children: [ "inputbar", "listview" ];
+}
+
+inputbar {
+    children: [ "prompt"];
+}
+
+prompt {
+    expand: true;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: @alternate-background;
+    text-color: @foreground-color;
+}
+
+listview {
+    columns: 5;
+    lines: 1;
+    spacing: 5px;
+    scrollbar: false;
+}
+
+element {
+    spacing: 0px;
+    padding: 15px 0px;
+    background-color: @alternate-background;
+}
+
+element normal.normal, element alternate.normal {
+    background-color: @alternate-background;
+}
+
+element-text {
+    padding: 0px;
+    margin: 0px;
+    horizontal-align: 0.25;
+}

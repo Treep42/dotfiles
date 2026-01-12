@@ -1,0 +1,41 @@
+@import "~/.config/rofi/config.rasi"
+
+window {
+    width: 350px;
+}
+
+mainbox {
+    children: ["message", "listview"];
+}
+
+messae {
+    expand: true;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: @alternate-background;
+    text-color: @foreground-color;
+}
+
+listview {
+    columns: 2;
+    lines: 1;
+    spacing: 5px;
+    scrollbar: false;
+}
+
+element {
+    spacing: 0px;
+    padding: 10px 0px;
+    background-color: @alternate-background;
+}
+
+element normal.normal, element alternate.normal {
+    background-color: @alternate-background;
+}
+
+element-text {
+    padding: 0px;
+    margin: 0px;
+    horizontal-align: 0.25;
+}
+

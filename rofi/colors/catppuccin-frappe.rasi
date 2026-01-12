@@ -25,5 +25,11 @@
   base: #303446;
   mantle: #292c3c;
   crust: #232634;
+  background:     #303446; //base
+  background-alt: #414559; //surface0
+  foreground:     #c6d0f5; //text
+  selected:       #81c8be; //teal
+  active:         #a6d189; //green
+  urgent:         #ea999c; //maroon
 }
 
