@@ -1,0 +1,16 @@
+{
+	"common": {
+		"term_truecolor": true,
+    "default_top_theme": "powerline"
+	},
+	"ext": {
+		"shell": {
+			"colorscheme": "catppuccin",
+			"theme": "custom_leftonly",
+			"local_themes": {
+				"continuation": "continuation",
+				"select": "select"
+			}
+		}
+	}
+}

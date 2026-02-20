@@ -1,0 +1,16 @@
+{
+	"segment_data": {
+		"hostname": {
+			"args": {
+				"only_if_ssh": true
+			}
+		},
+		"cwd": {
+			"args": {
+				"dir_limit_depth": 2,
+        "use_path_separator": true,
+        "shorten_home": true
+			}
+		}
+	}
+}

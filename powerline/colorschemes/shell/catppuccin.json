@@ -1,0 +1,13 @@
+{
+  "name": "Catppuccin Frappe for shell",
+  "groups": {
+    "mode": {"fg": "catppuccin:base", "bg": "catppuccin:green", "attrs": [ "bold" ]}
+  },
+  "mode_translations": {
+    "vicmd": {
+      "groups": {
+        "mode": {"fg": "catppuccin:base", "bg": "catppuccin:blue", "attrs": [ "bold" ]}
+      }
+    }
+  }
+}
