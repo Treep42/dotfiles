@@ -11,7 +11,7 @@ exit
 😀 grinning face face smile happy joy :D grin
 😃 grinning face with big eyes face happy joy haha :D :) smile funny
 😄 grinning face with smiling eyes face happy joy funny haha laugh like :D :) smile
-😁 beaming face with smiling eyes face happy smile joy kawaii
+😁 beaming face with smiling eyes face happy smile joy kawaii :D big grin
 😆 grinning squinting face happy joy lol satisfied haha face glad XD laugh
 😅 grinning face with sweat face hot happy laugh sweat smile relief
 🤣 rolling on the floor laughing face rolling floor laughing lol haha rofl
@@ -32,7 +32,7 @@ exit
 😋 face savoring food happy joy tongue smile face silly yummy nom delicious savouring
 😛 face with tongue face prank childish playful mischievous smile tongue
 😜 winking face with tongue face prank childish playful mischievous smile wink tongue
-🤪 zany face face goofy crazy
+🤪 zany face face goofy crazy woozy
 😝 squinting face with tongue face prank playful mischievous smile tongue
 🤑 money mouth face face rich dollar money
 🤗 hugging face face smile hug
@@ -56,7 +56,7 @@ exit
 😴 sleeping face face tired sleepy night zzz
 😷 face with medical mask face sick ill disease
 🤒 face with thermometer sick temperature thermometer cold fever
-🤕 face with head bandage injured clumsy bandage hurt
+🤕 face with head bandage injured clumsy bandage hurt headache
 🤢 nauseated face face vomit gross green sick throw up ill
 🤮 face vomiting face sick
 🤧 sneezing face face gesundheit sneeze sick allergy
@@ -915,7 +915,9 @@ exit
 🌛 first quarter moon face nature twilight planet space night evening sleep
 🌜 last quarter moon face nature twilight planet space night evening sleep
 🌡️ thermometer weather temperature hot cold
+🌡 thermometer weather temperature hot cold unicode
 ☀️ sun weather nature brightness summer beach spring
+🌣 sun weather unicode
 🌝 full moon face nature twilight planet space night evening sleep
 🌞 sun with face nature morning sky
 🪐 ringed planet outerspace
@@ -924,16 +926,26 @@ exit
 🌠 shooting star night photo
 🌌 milky way photo space stars
 ☁️ cloud weather sky
+☁ cloud weather unicode
 ⛅ sun behind cloud weather nature cloudy morning fall spring
+🌥 sun behind cloud weather unicode
 ⛈️ cloud with lightning and rain weather lightning
 🌤️ sun behind small cloud weather
+🌤 sun behind small cloud weather unicode
 🌥️ sun behind large cloud weather
 🌦️ sun behind rain cloud weather
+🌦 sun behind rain cloud weather unicode
 🌧️ cloud with rain weather
+🌧 cloud with rain weather unicode
 🌨️ cloud with snow weather
+🌨 cloud with snow weather unicode
 🌩️ cloud with lightning weather thunder
+🌩 cloud with lightning weather thunder unicode
 🌪️ tornado weather cyclone twister
+🌪 cloud tornado weather cyclone twister unicode
 🌫️ fog weather
+🌫 fog weather unicode
+⛆ rain weather unicode
 🌬️ wind face gust air
 🌀 cyclone weather swirl blue cloud vortex spiral whirlpool spin tornado hurricane typhoon
 🌈 rainbow nature happy unicorn face photo sky spring
@@ -945,9 +957,11 @@ exit
 ❄️ snowflake winter season cold weather christmas xmas
 ☃️ snowman winter season cold weather christmas xmas frozen
 ⛄ snowman without snow winter season cold weather christmas xmas frozen without snow
+⛇ snowman snow winter weather unicode
 ☄️ comet space
 🔥 fire hot cook flame
 💧 droplet water drip faucet spring
+🌢 droplet raindrop water drip unicode
 🌊 water wave sea water wave nature tsunami disaster
 🎃 jack o lantern halloween light pumpkin creepy fall
 🎄 christmas tree festival vacation december xmas celebration
@@ -1081,8 +1095,14 @@ exit
 🔔 bell sound notification christmas xmas chime
 🔕 bell with slash sound volume mute quiet silent
 🎼 musical score treble clef compose
+𝄞 musical score treble clef unicode
+𝄆 musical score left repeat unicode
+𝄇 musical score right repeat unicode
 🎵 musical note score tone sound
 🎶 musical notes music score
+♫ musical note score connected eighth unicode
+♪ musical note score single eighth unicode
+♩ musical note score quarter unicode
 🎙️ studio microphone sing recording artist talkshow
 🎚️ level slider scale
 🎛️ control knobs dial
@@ -1308,6 +1328,20 @@ exit
 🔛 on arrow arrow words
 🔜 soon arrow arrow words
 🔝 top arrow words blue-square
+← left arrow unicode
+↑ up top arrow unicode
+→ right arrow unicode
+↓ down bottom arrow unicode
+↖ up top left arrow unicode
+↗ up top right arrow unicode
+↘ bottom right arrow unicode
+↙ bottom left arrow unicode
+⇐ left double arrow unicode
+⇑ up top double arrow unicode
+⇒ right double arrow unicode
+⇓ down bottom double arrow unicode
+⇔ left right double arrow unicode
+⇕ up top down bottom double arrow unicode
 🛐 place of worship religion church temple prayer
 ⚛️ atom symbol science physics chemistry
 🕉️ om hinduism buddhism sikhism jainism
@@ -1857,4 +1891,70 @@ exit
 🫧 bubbles soap fun carbonation sparkling
 🪪 identification card document
 🟰 heavy equals sign math
-( ͡° ͜ʖ ͡°) lenny face that face
+🙜 dingbats leaf ornament unicode
+🙝 dingbats leaf ornament unicode
+🙞 dingbats leaf ornament unicode
+🙟 dingbats leaf ornament unicode
+🙤 dingbats bud ornament unicode
+🙥 dingbats bud ornament unicode
+🙦 dingbats bud ornament unicode
+🙧 dingbats bud ornament unicode
+🙶 dingbats heavy quotation mark ornament top unicode
+🙷 dingbats heavy quotation mark ornament top unicode
+🙸 dingbats heavy quotation mark ornament bottom unicode
+❝ dingbats round quotation mark ornament top unicode
+❞ dingbats round quotation mark ornament top unicode
+❠ dingbats round quotation mark ornament bottom unicode
+✩ five point star dingbats unicode
+⛤ pentagram five point star dingbarts unicode
+➊ circle number one 1 dingbats unicode
+➋ circle number two 2 dingbats unicode
+➌ circle number three 3 dingbats unicode
+➍ circle number four 4 dingbats unicode
+➎ circle number five 5 dingbats unicode
+➏ circle number six 6 dingbats unicode
+➐ circle number seven 7 dingbats unicode
+➑ circle number eight 8 dingbats unicode
+➒ circle number nine 9 dingbats unicode
+➓ circle number ten 10 dingbats unicode
+✿ sakura flower unicode
+♻ recycling symbol unicode
+🗶 script x cross unicode
+🗷 box boxed script x cross unicode
+✔ script check mark unicode
+🗹 box boxed script check mark unicode
+🗦 three rays whiskers left unicode
+🗧 three rays whiskers right unicode
+🗋 empty document note paper unicode
+🗎 note document paper writing unicode
+🗍 empty pages document note stack paper unicode
+🗐 document note pages stack paper unicode
+🗀 folder documents unicode
+🗁 open folder documents unicode
+🖒 thumbs up unicode
+🖓 thumbs down unicode
+🖉 pencil unicode
+✐ pencil unicode
+✀ scissors ornament dingbats unicode
+🖂 letter envelope unicode
+🕿 old school telephone unicode
+▷ right pointing triangle unicode
+◁ left pointing triangle unicode
+◢ lower right triangle unicode
+◣ lower left triangle unicode
+◤ upper left triangle unicode
+◥ upper right triangle unicode
+𜺱 keyhole ornament unicode
+❮ heavy left angle bracket quotation mark unicode
+❯ heavy right angle bracket quotation mark unicode
+( ͡° ͜ʖ ͡°) lenny face that face kaomoji
+¯\_(ツ)_/¯ shrug emoji kaomoji
+(╯°□°)╯︵ ┻━┻ table flip kaomoji
+┬─┬ノ( °_°ノ) put table back kaomoji
+(ಠ_ಠ) look of disapproval kaomoji
+/ᐠ_ ꞈ _ᐟ\ cat kaomoji
+(⚆ _ ⚆) shocked surprise kaomoji
+(◔_◔) rolling eyes bewilderment kaomoji
+ᓚᘏᗢ cat lying kaomoji
+>₍^. .^₎< cat face kaomoji
+  non breaking space unicode
