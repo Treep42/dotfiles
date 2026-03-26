@@ -1,0 +1,52 @@
+# Dual Monitor Template Configuration
+# Dynamic configuration for laptop + external monitor setup
+# Generated for power state: {{.PowerState}}
+
+{{- $laptop := index .MonitorsByTag "laptop" -}}
+{{- $external := index .MonitorsByTag "external" -}}
+
+# Monitor Configuration
+{{- if $laptop }}
+{{- if isOnBattery }}
+# Battery mode: Reduce laptop refresh rate to save power
+monitor={{$laptop.Name}},{{.default_res}}@{{.refresh_rate_low}},0x0,{{.default_scale}}
+{{- else }}
+# AC mode: Full laptop performance
+monitor={{$laptop.Name}},{{.default_res}}@{{.refresh_rate_high}},0x0,{{.default_scale}}
+{{- end }}
+{{- end }}
+
+{{- if $external }}
+monitor=desc:{{$external.Description}},preferred,auto-left,{{.default_scale}},transform,3
+{{- end }}
+
+# Power-dependent visual settings
+{{- if isOnBattery }}
+# Battery mode: Minimize visual effects
+decoration {
+    blur {
+        enabled = false
+    }
+    shadow {
+        enabled = false
+    }
+}
+
+animations {
+    enabled = false
+}
+{{- else }}
+# AC mode: Full visual effects
+decoration {
+    blur {
+        enabled = true
+    }
+    shadow {
+        enabled = true
+    }
+}
+
+animations {
+    enabled = true
+}
+{{- end }}

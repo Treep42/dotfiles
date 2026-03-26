@@ -1,0 +1,210 @@
+[general]
+destination = "$HOME/.config/hypr/monitors.conf"
+debounce_time_ms = 1500
+#pre_apply_exec = "notify-send --urgency low --app-name 'HyprDynamicMonitors' 'Switching monitor profile...'"
+post_apply_exec = "notify-send --urgency low --app-name 'HyprDynamicMonitors' 'Monitor profile switched successfully'"
+
+[notifications]
+disabled = false
+timeout_ms = 2000
+
+#== static values that can be used in templates ==#
+# These can be overwritten per profile.
+[static_template_values]
+default_vrr = "1"
+default_res = "1920x1080"
+default_scale = "1.0"
+refresh_rate_high = "120.00000"
+refresh_rate_low = "60.00000"
+
+#== settings for how to detect power state events ==#
+[power_events]
+
+[power_events.dbus_query_object]
+path = "/org/freedesktop/UPower/devices/line_power_ADP1"
+
+[[power_events.dbus_signal_match_rules]]
+object_path = "/org/freedesktop/UPower/devices/line_power_ADP1"
+
+#== settings for how to detect lid opened/closed state changes ==#
+[lid_events]
+
+[lid_events.dbus_query_object]
+destination = "org.freedesktop.UPower"
+path = "/org/freedesktop/UPower"
+method = "org.freedesktop.DBus.Properties.Get"
+expected_lid_closing_value = "true"
+
+[[lid_events.dbus_query_object.args]]
+arg = "org.freedesktop.UPower"
+
+[[lid_events.dbus_query_object.args]]
+arg = "LidIsClosed"
+
+[[lid_events.dbus_signal_match_rules]]
+interface = "org.freedesktop.DBus.Properties"
+object_path = "/org/freedesktop/UPower"
+member = "PropertiesChanged"
+
+[[lid_events.dbus_signal_receive_filters]]
+name = "org.freedesktop.DBus.Properties.PropertiesChanged"
+body = "LidIsClosed"
+
+#== PROFILES ==#
+
+# PROFILE: fallback if no other profile matches
+[fallback_profile]
+config_file = "hyprconfigs/fallback.conf"
+config_file_type = "static"
+
+# PROFILE: only laptop screen is connected
+[profiles.laptop_only]
+config_file = "hyprconfigs/laptop_only.conf.tmpl"
+config_file_type = "template"
+
+[profiles.laptop_only.conditions]
+
+[[profiles.laptop_only.conditions.required_monitors]]
+name = "eDP-1"
+
+# PROFILE: laptop + external super widescreen monitor
+# - laptop to the left
+[profiles.work_dual_monitors_template]
+config_file = "hyprconfigs/work_with_externals.go.tmpl"
+config_file_type = "template"
+
+[profiles.work_dual_monitors_template.conditions]
+
+[[profiles.work_dual_monitors_template.conditions.required_monitors]]
+name = "eDP-1" # laptop screen
+monitor_tag = "laptop"
+
+[[profiles.work_dual_monitors_template.conditions.required_monitors]]
+description = "LG Electronics LG HDR DQHD.*" # work widescreen monitors
+match_description_using_regex = true
+monitor_tag = "monitor1"
+
+# PROFILE: laptop + external super widescreen monitor
+# - laptop to the right
+[profiles.work-laptop-right]
+config_file = "/home/elisabeth/.config/hyprdynamicmonitors/hyprconfigs/work-laptop-right.go.tmpl"
+config_file_type = "template"
+[profiles.work-laptop-right.conditions]
+
+[[profiles.work-laptop-right.conditions.required_monitors]]
+name = "eDP-1" # laptop screen
+monitor_tag = "laptop"
+
+[[profiles.work-laptop-right.conditions.required_monitors]]
+description = "LG Electronics LG HDR DQHD 0x0001C81F"
+monitor_tag = "monitor1"
+
+# PROFILE: @Home Laptop + 2 External Monitors
+# disable laptop screen if lid closed
+[profiles.home_2external]
+config_file = "/home/elisabeth/.config/hyprdynamicmonitors/hyprconfigs/home_2external.go.tmpl"
+config_file_type = "template"
+[profiles.home_2external.conditions]
+
+[[profiles.home_2external.conditions.required_monitors]]
+name = "eDP-1" # laptop screen
+monitor_tag = "laptop"
+
+[[profiles.home_2external.conditions.required_monitors]]
+name = "DP-2"
+# description = "AccuScene Corporation Ltd ASL 4K 0x04867576"
+monitor_tag = "monitor1"
+
+[[profiles.home_2external.conditions.required_monitors]]
+name = "DP-3"
+# description = "Dell Inc. DELL U2412M YPPY068M20LS"
+monitor_tag = "monitor2"
+
+# PROFILE: @FI Laptop + 2 External Monitors
+# disable laptop screen if lid closed
+[profiles.fi_2external]
+config_file = "/home/elisabeth/.config/hyprdynamicmonitors/hyprconfigs/fi_2external.go.tmpl"
+config_file_type = "template"
+[profiles.fi_2external.conditions]
+
+[[profiles.fi_2external.conditions.required_monitors]]
+name = "eDP-1" # laptop screen
+monitor_tag = "laptop"
+
+[[profiles.fi_2external.conditions.required_monitors]]
+name = "DP-2"
+description = "Eizo Nanao.*"
+match_description_using_regex = true
+monitor_tag = "monitor1"
+
+[[profiles.fi_2external.conditions.required_monitors]]
+name = "DP-3"
+description = "Eizo Nanao.*"
+match_description_using_regex = true
+monitor_tag = "monitor2"
+
+# STUFF TO PUT IN LATER
+
+# Profile: Battery Saver (template with power optimizations)
+# [profiles.battery_saver]
+# config_file = "hyprconfigs/battery-saver-template.conf.tmpl"
+# config_file_type = "template"
+#
+# [profiles.battery_saver.conditions]
+# power_state = "BAT" # Only activate when on battery
+#
+# [[profiles.battery_saver.conditions.required_monitors]]
+# name = "eDP-1"
+# monitor_tag = "laptop"
+
+# # Profile: Triple Monitor Workstation
+# [profiles.workstation]
+# config_file = "hyprconfigs/workstation-template.conf.tmpl"
+# config_file_type = "template"
+#
+# [profiles.workstation.conditions]
+# power_state = "AC" # Workstation setup only makes sense on AC
+#
+# [[profiles.workstation.conditions.required_monitors]]
+# name = "eDP-1"
+# monitor_tag = "laptop"
+#
+# [[profiles.workstation.conditions.required_monitors]]
+# description = "Dell U2720Q"
+# monitor_tag = "left_monitor"
+#
+# [[profiles.workstation.conditions.required_monitors]]
+# description = "Dell U2720Q"   # Second identical monitor
+# monitor_tag = "right_monitor"
+
+# # Profile: Presentation Mode (projector/external display)
+# [profiles.presentation]
+# config_file = "hyprconfigs/presentation-template.conf.tmpl"
+# config_file_type = "template"
+#
+# # No power state requirement - presentations can happen on battery
+#
+# [[profiles.presentation.conditions.required_monitors]]
+# name = "eDP-1"
+# monitor_tag = "laptop"
+#
+# [[profiles.presentation.conditions.required_monitors]]
+# # Generic match for various projectors/presentation displays
+# description = "Projector" # Or match specific projector model
+# monitor_tag = "projector"
+
+# # Profile: Match by regex
+# [profiles.regex]
+# config_file = "hyprconfigs/regex.conf.tmpl"
+# config_file_type = "template"
+#
+# [[profiles.regex.conditions.required_monitors]]
+# name = "eDP.*"
+# monitor_tag = "laptop"
+# match_name_using_regex = true
+#
+# [[profiles.regex.conditions.required_monitors]]
+# description = "LG.*"
+# monitor_tag = "external"
+# match_description_using_regex = true
+

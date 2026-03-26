@@ -1,0 +1,16 @@
+# laptop
+# monitor1/2: Eizo Nanao Corporation EV2795 47025022
+{{- $laptop := index .MonitorsByTag "laptop" -}}
+{{- $monitor1 := index .MonitorsByTag "monitor1" -}}
+{{- $monitor2 := index .MonitorsByTag "monitor2" }}
+
+# Laptop monitor: disable if lid is closed
+{{if isLidClosed}}
+monitor={{$laptop.Name}},disable
+monitor=desc:{{$monitor2.Description}},2560x1440@60,0x0,1.0,transform,0,vrr,0
+monitor=desc:{{$monitor1.Description}},2560x1440@60,2560x0,1.0,transform,0,vrr,0
+{{else}}
+monitor = {{$laptop.Name}},{{.default_res}}@{{.refresh_rate_low}},0x0,{{.default_scale}}
+monitor=desc:{{$monitor2.Description}},2560x1440@60,2560x0,1.0,transform,0,vrr,0
+monitor=desc:{{$monitor1.Description}},2560x1440@60,5120x0,1.0,transform,0,vrr,0
+{{end}}

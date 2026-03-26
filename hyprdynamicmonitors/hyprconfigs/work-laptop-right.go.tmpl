@@ -1,0 +1,17 @@
+# configuration for using with work super widescreen
+# laptop placed to the RIGHT
+# - auto-disable laptop screen if lid closed
+
+{{- $laptop := index .MonitorsByTag "laptop" -}}
+{{- $monitor1 := index .MonitorsByTag "monitor1" -}}
+
+# isable laptop screen, use external only
+{{if isLidClosed}}
+monitor={{$laptop.Name}},disable
+{{else}}
+monitor = {{$laptop.Name}},{{.default_res}}@{{.refresh_rate_low}},0x0,{{.default_scale}}
+{{end}}
+{{- if $monitor1 }}
+monitor=desc:{{$monitor1.Description}},preferred,auto-left,{{.default_scale}}
+{{- end }}
+

@@ -11,7 +11,7 @@
     "background":                 {"fg": "catppuccin:text",         "bg": "catppuccin:base",   "attrs": []},
     "background:divider":         {"fg": "catppuccin:text",         "bg": "catppuccin:base",   "attrs": []},
     "user":                       {"fg": "catppuccin:base",         "bg": "catppuccin:blue",    "attrs": [ "bold" ]},
-    "virtualenv":                 {"fg": "catppuccin:text",         "bg": "catppuccin:green",  "attrs": []},
+    "virtualenv":                 {"fg": "catppuccin:base",         "bg": "catppuccin:green",  "attrs": []},
     "branch":                     {"fg": "catppuccin:base",         "bg": "catppuccin:yellow", "attrs": []},
     "branch_dirty":               "branch",
     "branch_clean":               "branch",

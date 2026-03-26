@@ -1938,8 +1938,10 @@ exit
 ✀ scissors ornament dingbats unicode
 🖂 letter envelope unicode
 🕿 old school telephone unicode
-▷ right pointing triangle unicode
-◁ left pointing triangle unicode
+▷ right pointing triangle hollow unicode
+◁ left pointing triangle hollow unicode
+▶ right pointing triangle filled unicode
+◀ left pointing triangle filled unicode
 ◢ lower right triangle unicode
 ◣ lower left triangle unicode
 ◤ upper left triangle unicode
