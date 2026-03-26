@@ -1,5 +1,7 @@
 # MINIMUM SCREENRC
 
+term xterm-color
+
 # -- SETTINGS --
 startup_message off
 #nethack on
@@ -17,7 +19,7 @@ defbce on
 # have fullscreen programs (vim, I'm looking at you!) deleted from buffer after closing them
 altscreen on
 
-# set shell
+# set shell to behave like a login shell
 shell -$SHELL
 
 # default vindows
