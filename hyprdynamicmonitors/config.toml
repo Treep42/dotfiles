@@ -143,6 +143,23 @@ description = "Eizo Nanao.*"
 match_description_using_regex = true
 monitor_tag = "monitor2"
 
+# PROFILE: @FI Laptop + 1 Wide External Monitors
+# disable laptop screen if lid closed
+[profiles.fi_1wideexternal]
+config_file = "/home/elisabeth/.config/hyprdynamicmonitors/hyprconfigs/fi_1wideexternal.go.tmpl"
+config_file_type = "template"
+[profiles.fi_1wideexternal.conditions]
+
+[[profiles.fi_1wideexternal.conditions.required_monitors]]
+name = "eDP-1" # laptop screen
+monitor_tag = "laptop"
+
+[[profiles.fi_1wideexternal.conditions.required_monitors]]
+name = "DP-1"
+description = "Eizo Nanao.*"
+match_description_using_regex = true
+monitor_tag = "monitor1"
+
 # STUFF TO PUT IN LATER
 
 # Profile: Battery Saver (template with power optimizations)

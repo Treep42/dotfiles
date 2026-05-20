@@ -1,3 +1,8 @@
 # yazi plugins & flavors
 yazi/flavors
 yazi/plugins
+
+# mpd database files
+mpd/database
+mpd/state
+mpd/sticker.sql
