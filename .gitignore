@@ -6,3 +6,4 @@ yazi/plugins
 mpd/database
 mpd/state
 mpd/sticker.sql
+mpd/playlists
