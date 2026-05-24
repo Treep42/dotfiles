@@ -1,15 +1,12 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+palette = 'catppuccin_mocha'
+
 format = """
-[](red)\
-$os\
 $username\
-[](bg:peach fg:red)\
 $directory\
-[](bg:yellow fg:peach)\
 $git_branch\
 $git_status\
-[](fg:yellow bg:green)\
 $c\
 $rust\
 $golang\
@@ -19,52 +16,29 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:green bg:sapphire)\
-$conda\
-[](fg:sapphire bg:lavender)\
-$time\
-[ ](fg:lavender)\
-$cmd_duration\
 $line_break\
 $character"""
 
-palette = 'catppuccin_mocha'
+continuation_prompt = '[❯](bold fg:lavender)'
 
-[os]
-disabled = true
-style = "bg:red fg:crust"
-
-[os.symbols]
-Windows = ""
-Ubuntu = "󰕈"
-SUSE = ""
-Raspbian = "󰐿"
-Mint = "󰣭"
-Macos = "󰀵"
-Manjaro = ""
-Linux = "󰌽"
-Gentoo = "󰣨"
-Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
-Android = ""
-AOSC = ""
-Arch = "󰣇"
-Artix = "󰣇"
-CentOS = ""
-Debian = "󰣚"
-Redhat = "󱄛"
-RedHatEnterprise = "󱄛"
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:green)'
+error_symbol = '[❯](bold fg:red)'
+vimcmd_symbol = '[❮](bold fg:green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
+vimcmd_replace_symbol = '[❮](bold fg:lavender)'
+vimcmd_visual_symbol = '[❮](bold fg:yellow)'
 
 [username]
 show_always = true
-style_user = "bg:red fg:crust"
-style_root = "bg:red fg:crust"
-format = '[ $user]($style)'
+style_user = "blue"
+style_root = "red"
+format = '[ $user](bg:$style fg:crust)[](bg:sky fg:$style)'
 
 [directory]
-style = "bg:peach fg:crust"
-format = "[ $path ]($style)"
+style = "sky"
+format = "[ $path ](bg:$style fg:crust)[ ](bg:none fg:$style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
@@ -77,6 +51,11 @@ truncation_symbol = "…/"
 "Pictures" = " "
 "pictures" = " "
 "Developer" = "󰲋 "
+"Projects" = "󰲋 "
+"Books" = " "
+"BOOKS" = " "
+"Calibre" = " "
+"calibre" = " "
 "tools" = "󱁤 "
 "VIDEO" = " "
 "videos" = " "
@@ -86,98 +65,63 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:yellow"
-format = '[[ $symbol $branch ](fg:crust bg:yellow)]($style)'
+style = "fg:yellow"
+format = '[<$branch>]($style)'
 
 [git_status]
-style = "bg:yellow"
-format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
+style = "fg:yellow bold"
+format = '[ ($all_status$ahead_behind )]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+style = "fg:green"
+format = '[ $symbol( $version)]($style)'
 
 [c]
 symbol = " "
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+style = "fg:green"
+format = '[ $symbol( $version)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+style = "fg:green"
+format = '[ $symbol( $version)]($style)'
 
 [golang]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+style = "fg:green"
+format = '[ $symbol( $version)]($style)'
 
 [php]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+style = "fg:green"
+format = '[ $symbol( $version)]($style)'
 
 [java]
 symbol = " "
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+style = "fg:green"
+format = '[ $symbol( $version)]($style)'
 
 [kotlin]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+style = "fg:green"
+format = '[ $symbol( $version)]($style)'
 
 [haskell]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+style = "fg:green"
+format = '[ $symbol( $version)]($style)'
 
 [python]
 symbol = ""
-style = "bg:green"
+style = "fg:green"
 version_format = "v${major}.${minor}"
 pyenv_version_name = false
 detect_extensions = []
-format = '[[ $symbol ($version )(\[$virtualenv\] )](fg:crust bg:green)]($style)'
-
-[docker_context]
-symbol = ""
-style = "bg:sapphire"
-format = '[[ $symbol( $context) ](fg:crust bg:sapphire)]($style)'
-
-[conda]
-symbol = "  "
-style = "fg:crust bg:sapphire"
-format = '[$symbol$environment ]($style)'
-ignore_base = false
-
-[time]
-disabled = true
-time_format = "%R"
-style = "bg:lavender"
-format = '[[  $time ](fg:crust bg:lavender)]($style)'
+format = '[ $symbol( $version)(<$virtualenv> )]($style)'
 
 [line_break]
 disabled = true
-
-[character]
-disabled = false
-success_symbol = '[❯](bold fg:green)'
-error_symbol = '[❯](bold fg:red)'
-vimcmd_symbol = '[❮](bold fg:green)'
-vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
-vimcmd_replace_symbol = '[❮](bold fg:lavender)'
-vimcmd_visual_symbol = '[❮](bold fg:yellow)'
-
-[cmd_duration]
-show_milliseconds = true
-format = " in $duration "
-style = "bg:lavender"
-disabled = true
-show_notifications = false
-min_time = 5000
-min_time_to_notify = 45000
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
