@@ -6,16 +6,26 @@
     password: None,
     theme: Some("metalduckling"),
     cache_dir: None,
+    enable_config_hot_reload: true,
+    enable_mouse: true,
+
     on_song_change: None,
+    keep_state_on_song_change: true,
+    select_current_song_on_change: true,
+    center_current_song_on_change: true,
+
     volume_step: 5,
     max_fps: 30,
     scrolloff: 5,
-    wrap_navigation: false,
-    enable_mouse: false,
-    status_update_interval_ms: 1000,
-    select_current_song_on_change: true,
-    center_current_song_on_change: true,
+    wrap_navigation: true,
+    browser_song_sort: [Disc, Track, Artist, Title], // default
+    directories_sort: SortFormat(group_by_type: true, reverse: false), // default
+    status_update_interval_ms: 1000, // default
+    rewind_to_start_sec: None, // default
+
     lyrics_dir: Some("/data/music"),
+    default_album_art_path: None,
+
     album_art: (
         method: Auto,
         max_size_px: (width: 400, height: 400),
@@ -23,37 +33,62 @@
         vertical_align: Center,
         horizontal_align: Center,
     ),
+
+    cava: (
+        framerate: 60, // default 60
+        autosens: true, // default true
+        sensitivity: 100, // default 100
+        lower_cutoff_freq: 50, // not passed to cava if not provided
+        higher_cutoff_freq: 10000, // not passed to cava if not provided
+        input: (
+            method: Fifo,
+            source: "/tmp/mpd.fifo",
+            sample_rate: 44100,
+            channels: 2,
+            sample_bits: 16,
+        ),
+        smoothing: (
+            noise_reduction: 77, // default 77
+            monstercat: false, // default false
+            waves: false, // default false
+        ),
+        // this is a list of floating point numbers thats directly passed to cava
+        // they are passed in order that they are defined
+        eq: []
+    ),
+
     keybinds: (
+        clear: true,
         global: {
+            "~":       ShowHelp,
+            "?":       ShowHelp,
             ":":       CommandMode,
-            ",":       VolumeDown,
+            "q":       Quit,
             "s":       Stop,
+            "p":       TogglePause,
+            ",":       VolumeDown,
             ".":       VolumeUp,
             "<Tab>":   NextTab,
             "<S-Tab>": PreviousTab,
-            "1":       SwitchToTab("Queue"),
-            "2":       SwitchToTab("Playlists"),
-            "3":       SwitchToTab("Directories"),
-            "4":       SwitchToTab("Artists"),
-            "5":       SwitchToTab("Albums"),
-            "6":       SwitchToTab("Search"),
-            //"7":       SwitchToTab("Search"),
-            "q":       Quit,
+            "gt":      NextTab,
+            "gT":      PreviousTab,
+            "1":       SwitchToTab("[home]"),
+            "2":       SwitchToTab("[playlists]"),
+            "3":       SwitchToTab("[browse]"),
+            "4":       SwitchToTab("[artists]"),
+            "5":       SwitchToTab("[search]"),
             ">":       NextTrack,
-            "p":       TogglePause,
             "<":       PreviousTrack,
             "f":       SeekForward,
+            "b":       SeekBack,
             "z":       ToggleRepeat,
             "x":       ToggleRandom,
-            "c":       ToggleConsume,
-            "v":       ToggleSingle,
-            "b":       SeekBack,
-            "~":       ShowHelp,
+            "v":       ToggleSingleOnOff, // skip oneshot modes
             "I":       ShowCurrentSongInfo,
-            "O":       ShowOutputs,
-            "P":       ShowDecoders,
+            "<C-U>":   Rescan,
         },
         navigation: {
+            // move cursor
             "k":         Up,
             "j":         Down,
             "h":         Left,
@@ -62,49 +97,67 @@
             "<Down>":    Down,
             "<Left>":    Left,
             "<Right>":   Right,
+            "gg":        Top,
+            "G":         Bottom,
+            // move half a screen up or down
+            "<C-d>":     DownHalf,
+            "<C-u>":     UpHalf,
+            // focus pane in direction
             "<C-k>":     PaneUp,
             "<C-j>":     PaneDown,
             "<C-h>":     PaneLeft,
             "<C-l>":     PaneRight,
-            "<C-u>":     UpHalf,
+            // move items up and down (e.g. in a queue)
+            "J":         MoveDown,
+            "K":         MoveUp,
+            // searching
+            "/":         EnterSearch,
+            "n":         NextResult,
             "N":         PreviousResult,
+            // selection
+            "<Space>":   Select,
+            "<C-Space>": InvertSelection,
+            // actions
+            "<CR>":      Confirm,
+            "<C-c>":     Close,
+            "<Esc>":     Close,
+            "i":         FocusInput, // focus textbox if any is on screen
+            "D":         Delete,
             "a":         Add,
             "A":         AddAll,
             "r":         Rename,
-            "n":         NextResult,
-            "g":         Top,
-            "<Space>":   Select,
-            "<C-Space>": InvertSelection,
-            "G":         Bottom,
-            "<CR>":      Confirm,
-            "i":         FocusInput,
-            "J":         MoveDown,
-            "<C-d>":     DownHalf,
-            "/":         EnterSearch,
-            "<C-c>":     Close,
-            "<Esc>":     Close,
-            "K":         MoveUp,
-            "D":         Delete,
+            "I":         ShowInfo,
+            "Z":         ContextMenu(),
+            "<C-s>a":    Save(kind: Modal(all: true)),
+            "<C-s>s":    Save(kind: Modal(all: false)),
+            // rating
+            "+":         Rate(kind: Like(), current: false),
+            "#":         Rate(kind: Neutral(), current: false),
+            "-":         Rate(kind: Dislike(), current: false),
         },
         queue: {
-            "D":       DeleteAll,
             "<CR>":    Play,
-            "<C-s>":   Save,
-            "a":       AddToPlaylist,
-            "d":       Delete,
-            "i":       ShowInfo,
             "C":       JumpToCurrent,
+            "d":       Delete,
+            "D":       DeleteAll,
+            "X":       Shuffle,
+            /*
+            "<C-s>":   Save(kind: Modal(all: true)),
+            "a":       AddToPlaylist,
+            "I":       ShowInfo,
+            */
         },
     ),
     search: (
         case_sensitive: false,
+        ignore_diacritics: true,
+        search_button: false,
         mode: Contains,
         tags: [
             (value: "any",         label: "Any Tag"),
+            (value: "title",       label: "Title"),
             (value: "artist",      label: "Artist"),
             (value: "album",       label: "Album"),
-            (value: "albumartist", label: "Album Artist"),
-            (value: "title",       label: "Title"),
             (value: "filename",    label: "Filename"),
             (value: "genre",       label: "Genre"),
         ],
@@ -112,43 +165,33 @@
     artists: (
         album_display_mode: NameOnly,
         album_sort_by: Name,
+        album_date_tags: [Date], //default
     ),
     tabs: [
         (
-            name: "Queue",
+            name: "[home]",
             pane: Split(
                 direction: Vertical,
                 panes: [
-                    (
-                        size: "90%",
-                        pane: Pane(Queue),
-                    ),
-                    (
-                        size: "6",
-                        borders: "TOP",
-                        pane: Pane(Lyrics),
-                    ),
+                    (size: "100%", pane: Pane(Queue)),
+                    //(size: "6", borders: "TOP", pane: Pane(Lyrics)),
                 ],
             ),
         ),
         (
-            name: "Playlists",
+            name: "[playlists]",
             pane: Pane(Playlists),
         ),
         (
-            name: "Directories",
+            name: "[browse]",
             pane: Pane(Directories),
         ),
         (
-            name: "Artists",
+            name: "[artists]",
             pane: Pane(Artists),
         ),
         (
-            name: "Albums",
-            pane: Pane(Albums),
-        ),
-        (
-            name: "Search",
+            name: "[search]",
             pane: Pane(Search),
         ),
     ],
