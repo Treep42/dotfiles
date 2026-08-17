@@ -12,3 +12,5 @@ alias music='rmpc'
 if type bat &> /dev/null; then
     alias cat='bat --plain'
 fi
+alias cdframework='cd ~/work/git/WizFramework/'
+alias cdwizid='cd ~/work/git/WizIdentity/'
