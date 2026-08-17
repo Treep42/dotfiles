@@ -1,5 +1,5 @@
 [general]
-destination = "$HOME/.config/hypr/monitors.conf"
+destination = "$HOME/.config/hypr/auto_monitors.lua"
 debounce_time_ms = 1500
 #pre_apply_exec = "notify-send --urgency low --app-name 'HyprDynamicMonitors' 'Switching monitor profile...'"
 post_apply_exec = "notify-send --urgency low --app-name 'HyprDynamicMonitors' 'Monitor profile switched successfully'"
@@ -54,7 +54,7 @@ body = "LidIsClosed"
 
 # PROFILE: fallback if no other profile matches
 [fallback_profile]
-config_file = "hyprconfigs/fallback.conf"
+config_file = "hyprconfigs/fallback.lua"
 config_file_type = "static"
 
 # PROFILE: only laptop screen is connected
