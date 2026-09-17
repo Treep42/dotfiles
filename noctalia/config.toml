@@ -1,0 +1,157 @@
+config_version = 13
+
+[bar.default]
+background_opacity = 0.8
+capsule_border = "outline"
+capsule_fill = "outline"
+capsule_opacity = 0.7
+capsule_thickness = 0.8
+concave_edge_corners = false
+contact_shadow = true
+margin_ends = 0
+radius = 0
+radius_top_left = 0
+radius_top_right = 0
+scale = 1.1
+thickness = 38
+start = [ "launcher", "control-center", "caffeine", "workspaces", "active_window" ]
+center = [ "media" ]
+end = [
+    "privacy",
+    "bluetooth",
+    "input_volume",
+    "volume",
+    "brightness",
+    "network",
+    "battery",
+    "tray",
+    "notifications",
+    "clock",
+    "session"
+]
+
+[brightness]
+enable_ddcutil = true
+
+[control_center]
+hidden_tabs = [ "screen-time" ]
+sidebar = "full"
+sidebar_section = "full"
+
+    [control_center.calendar]
+    show_week_numbers = true
+
+[desktop_widgets]
+enabled = false
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+pre_action_fade_seconds = 10
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = false
+    timeout = 660.0
+
+[location]
+address = "Münster, Germany"
+
+[lockscreen]
+blur_intensity = 0.4
+
+[osd.kinds]
+keyboard_backlight = false
+media = false
+
+[plugins]
+enabled = [ "noctalia/kaomoji" ]
+
+[shell.panel]
+open_near_click_control_center = true
+
+[shell.screenshot]
+directory = "~/Pictures/Screenshots"
+freeze_screen = false
+
+[theme]
+builtin = "Catppuccin"
+
+[wallpaper]
+directory = "~/Pictures/Wallpapers"
+
+    [wallpaper.automation]
+    enabled = true
+    interval_seconds = 1200
+
+    [wallpaper.default]
+    path = "~/Pictures/Wallpapers/cozy/sakura-train-crossing.jpg"
+
+    [wallpaper.last]
+    path = "~/Pictures/Wallpapers/cozy/sakura-train-crossing.jpg"
+
+    [wallpaper.monitors.DP-2]
+    path = "~/Pictures/Wallpapers/cozy/sakura-train-crossing.jpg"
+
+    [wallpaper.monitors.DP-3]
+    path = "~/Pictures/Wallpapers/cozy/sakura-train-crossing.jpg"
+
+[weather]
+effects = false
+
+[widget.active_window]
+capsule = true
+
+[widget.clock]
+capsule = true
+format = "{:%H:%M} - {:%d. %b %Y}"
+
+[widget.input_volume]
+hide_when_inactive = true
+show_label = false
+
+[widget.launcher]
+glyph = "menu-2"
+
+[widget.media]
+hide_when_no_media = true
+
+[widget.network]
+capsule = true
+show_label = false
+
+[widget.notifications]
+capsule = true
+
+[widget.privacy]
+hide_inactive = true
+
+[widget.session]
+capsule_border = "shadow"
+color = "error"
+icon_color = "error"
+
+[widget.tray]
+capsule = true
+drawer = true
+drawer_item_size = 20.0
+
+[widget.volume]
+capsule = true
+
+[widget.workspaces]
+active_pill_size = 1.5
+focused_color = "tertiary"
+hide_when_empty = true
+inactive_pill_size = 1.05
+label_source = "name"
+occupied_color = "outline"
