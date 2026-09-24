@@ -85,7 +85,7 @@
             "x":       ToggleRandom,
             "v":       ToggleSingleOnOff, // skip oneshot modes
             "I":       ShowCurrentSongInfo,
-            "<C-U>":   Rescan,
+            "<C-r>":   Rescan,
         },
         navigation: {
             // move cursor
