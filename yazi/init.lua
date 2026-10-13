@@ -8,7 +8,7 @@ require("full-border"):setup({
 require("git"):setup()
 
 -- folder-rules
-require("folder-rules"):setup()
+-- require("folder-rules"):setup()
 
 -- show symlink in status bar
 Status:children_add(function(self)
